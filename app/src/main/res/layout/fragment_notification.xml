@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ps.sipnas.ui.notification.NotificationViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/default_margin"
+        android:paddingTop="@dimen/default_margin"
+        android:paddingEnd="@dimen/default_margin">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:loadingVisibility="@{viewModel.loadingView}" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:disconnect="@{viewModel.disconnect}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dimen100"
+                android:layout_height="@dimen/dimen100"
+                android:src="@drawable/ic_disconnect" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disconnect"
+                android:textColor="@color/gray" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/dimen50"
+            android:drawableTop="@drawable/ic_no_data"
+            android:gravity="center"
+            android:text="@string/no_notification"
+            android:textSize="@dimen/text_size_extra_large"
+            android:visibility="gone"
+            app:noDataVisibility="@{viewModel.noDataView}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_notification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentVisibility="@{viewModel.content}"
+            app:rvAdapter="@{viewModel.adapter}" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

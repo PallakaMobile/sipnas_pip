@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ps.sipnas.ui.home.upload.UploadViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/default_margin">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/upload_proof"
+            android:textSize="@dimen/text_size_large" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_type_evidence"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:backgroundTint="@color/blue"
+            android:padding="@dimen/default_margin_half" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_type_spj"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:backgroundTint="@color/blue" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_desc_kegiatan"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/desc_kegiatan" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_upload"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/icon_large"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/default_margin_half"
+            android:src="@drawable/ic_insert_image" />
+
+        <TextView
+            android:id="@+id/tv_insert_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/insert_image" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cancel"
+                style="@style/PrimaryButton.Outline"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/tab_small"
+                android:layout_margin="@dimen/default_margin_half"
+                android:text="@string/cancel"
+                android:textSize="@dimen/text_size_small" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_upload"
+                style="@style/PrimaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/tab_small"
+                android:layout_margin="@dimen/default_margin_half"
+                android:text="@string/upload"
+                android:textSize="@dimen/text_size_small"
+                app:updateText="@{viewModel.progress}" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

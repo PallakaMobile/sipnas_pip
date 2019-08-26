@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_view_small"
+        android:padding="0.5dp"
+        android:transitionName="kegiatan"
+        app:imageGridSmall="@{url}" />
+</layout>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ps.sipnas.ui.home.process.ProcessViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                app:loadingVisibility="@{viewModel.loadingView}" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:disconnect="@{viewModel.disconnect}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dimen100"
+                    android:layout_height="@dimen/dimen100"
+                    android:src="@drawable/ic_disconnect" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/disconnect"
+                    android:textColor="@color/gray" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/dimen50"
+                android:drawableTop="@drawable/ic_no_data"
+                android:gravity="center"
+                android:text="@string/no_data"
+                android:textSize="@dimen/text_size_extra_large"
+                android:visibility="gone"
+                app:noDataVisibility="@{viewModel.noDataView}" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cv_header"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="-16dp"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:visibility="gone"
+                app:cardCornerRadius="@dimen/default_margin_half"
+                app:contentVisibility="@{viewModel.content}"
+                app:strokeColor="@color/blue"
+                app:strokeWidth="1dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical"
+                    android:padding="@dimen/default_margin_half">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_rincian_biaya_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_margin_half"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/default_margin_half"
+                            android:gravity="center_vertical"
+                            android:text="@string/rincian_biaya"
+                            android:textSize="@dimen/text_size_medium" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_margin_half"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/default_margin_half"
+                            android:gravity="center_vertical"
+                            app:status="@{viewModel.dataProses.statusUpload}"
+                            android:textSize="@dimen/text_size_medium" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll_rincian"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_detail_process"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never"
+                            app:rvAdapter="@{viewModel.adapter}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:gravity="center"
+                            android:text="@string/upload_evidence" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_upload"
+                            android:layout_width="@dimen/icon_large"
+                            android:layout_height="@dimen/icon_large"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/default_margin"
+                            android:src="@drawable/ic_upload" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_half"
+                android:visibility="gone"
+                app:cardCornerRadius="@dimen/default_margin_half"
+                app:cardElevation="@dimen/card_elevation"
+                app:contentVisibility="@{viewModel.content}">
+
+                <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/blue_gradient"
+                    android:padding="@dimen/default_margin_half">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_profile"
+                        android:layout_width="@dimen/tab_icon"
+                        android:layout_height="@dimen/tab_icon"
+                        app:imageRound="@{viewModel.dataProses.foto}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_title_jadwal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_toEndOf="@+id/iv_profile"
+                        android:text="@string/title_jadwal_berangkat"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_jadwal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_title_jadwal"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@+id/iv_profile"
+                        android:text="@{viewModel.dataProses.keberangkatan}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_no_spt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="60dp"
+                        android:text="@{viewModel.dataProses.noSpt}"
+                        android:textColor="@color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_no_spt_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_no_spt"
+                        android:layout_alignParentEnd="true"
+                        android:text="No.SPT"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_tanggal_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_profile"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:text="Tanggal"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_durasi_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_profile"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_toEndOf="@+id/tv_tanggal_title"
+                        android:text="Durasi"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_biaya_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_profile"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_toEndOf="@+id/tv_durasi_title"
+                        android:text="Biaya"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_tanggal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_tanggal_title"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{viewModel.dataProses.tanggalMulai}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_durasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_durasi_title"
+                        android:layout_marginStart="50dp"
+                        android:layout_toEndOf="@+id/tv_tanggal_title"
+                        android:text="@{viewModel.dataProses.durasi}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_biaya"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_biaya_title"
+                        android:layout_marginStart="40dp"
+                        android:layout_toEndOf="@+id/tv_durasi_title"
+                        android:text="@{viewModel.dataProses.totalBiaya}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_medium" />
+                </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+    </ScrollView>
+</layout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ps.sipnas.ui.home.upload.spj.SpjViewModel" />
+    </data>
+
+    <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_gallery_spj"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentVisibility="@{viewModel.content}"
+            app:rvAdapter="@{viewModel.adapterSPJ}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen50"
+            android:drawableTop="@drawable/ic_no_data"
+            android:gravity="center"
+            android:text="@string/no_data"
+            android:textSize="@dimen/text_size_extra_large"
+            android:visibility="gone"
+            app:noDataVisibility="@{viewModel.noDataView}" />
+
+        <ProgressBar
+            android:id="@+id/pb_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            app:loadingVisibility="@{viewModel.loadingView}" />
+    </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+</layout>

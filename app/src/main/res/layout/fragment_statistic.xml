@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ps.sipnas.ui.home.statistic.StatisticViewModel" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            app:loadingVisibility="@{viewModel.loadingView}" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:disconnect="@{viewModel.disconnect}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dimen100"
+                android:layout_height="@dimen/dimen100"
+                android:src="@drawable/ic_disconnect" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disconnect"
+                android:textColor="@color/gray" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone"
+            app:contentVisibility="@{viewModel.content}"
+            tools:context=".ui.home.done.DoneFragment">
+
+            <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_total_anggaran"
+                    style="@style/CardView.Light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/default_margin_half"
+                    app:cardUseCompatPadding="true">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/blue_gradient"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/default_margin"
+                        android:paddingTop="@dimen/default_margin"
+                        android:paddingEnd="@dimen/default_margin"
+                        android:paddingBottom="@dimen/progressbar_medium">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/total_anggaran"
+                            android:textColor="@color/white" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_total_anggaran"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/default_margin_half"
+                            android:text="@{viewModel.statistic.totalAnggaran}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_extra_large2" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_rank"
+                    style="@style/CardView.Light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cv_total_anggaran"
+                    android:layout_marginStart="@dimen/button_corner"
+                    android:layout_marginTop="-50dp"
+                    android:layout_marginEnd="@dimen/button_corner"
+                    app:cardCornerRadius="@dimen/default_margin_half"
+                    app:cardUseCompatPadding="true">
+
+                    <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/default_margin"
+                        android:paddingTop="@dimen/default_margin"
+                        android:paddingBottom="@dimen/default_margin">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rank"
+                                android:textColor="@color/blue"
+                                android:textSize="@dimen/text_size_large" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_rank"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_rank_title"
+                                android:text="@{viewModel.statistic.peringkat}"
+                                android:textColor="@color/blue"
+                                android:textSize="@dimen/text_size_extra_large5" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/button_corner"
+                            android:background="@drawable/bg_rank"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/default_margin_half">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_arrival"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_medium" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_total_arrival"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_rank_title"
+                                android:text="@{viewModel.statistic.jmlKeberangkatan}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_extra_large3" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_statistic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cv_rank"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:backgroundTint="@color/blue" />
+
+                <RadioGroup
+                    android:id="@+id/rg_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sp_statistic"
+                    android:layout_margin="@dimen/default_margin"
+                    android:orientation="vertical" />
+
+                <ps.sipnas.support.graphview.GraphView
+                    android:id="@+id/gv_statistic"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/rg_month"
+                    android:layout_margin="@dimen/default_margin"
+                    app:seriesColor="@color/primary" />
+
+            </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+        </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

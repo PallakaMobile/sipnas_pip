@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion 28
+
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "ps.sipnas"
+        minSdkVersion 21
+        targetSdkVersion 28
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        buildConfigField 'String', 'BASE_URL', '"https://sipnas.pallakagroup.com/"'
+        buildConfigField 'String', 'SECRET_KEY', '"yO3HoqqtuLDkW0THmJ9532Wgtk8lgkGFETUKVCdV"'
+        buildConfigField 'String', 'GRANT_TYPE', '"password"'
+        buildConfigField 'String', 'CLIENT_ID', '"2"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    androidx_version = "1.0.0"
+    ps_version = "16.0.0"
+    retrofit_version = "2.4.0"
+    koin_version = "1.0.1"
+    glide_version = "4.8.0"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //Android Support
+    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "com.google.android.material:material:$androidx_version"
+    implementation "androidx.recyclerview:recyclerview:$androidx_version"
+    implementation "androidx.cardview:cardview:$androidx_version"
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    //Koin
+    //include koin-android koin-scope and core
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    //Arch Component
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+
+    //Firebase
+    implementation "com.google.firebase:firebase-core:16.0.6"
+    implementation "com.google.firebase:firebase-analytics:16.0.6"
+    implementation "com.crashlytics.sdk.android:crashlytics:2.9.8"
+    implementation "com.google.firebase:firebase-messaging:17.3.4"
+
+    //Google Play Services
+    implementation "com.google.android.gms:play-services-maps:$ps_version"
+    implementation "com.google.android.gms:play-services-location:$ps_version"
+    implementation "com.google.android.gms:play-services-places:$ps_version"
+
+    //Rx
+    implementation "io.reactivex.rxjava2:rxjava:2.2.6"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
+    implementation "com.github.tbruyelle:rxpermissions:0.10.2"
+
+    //Network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    //ImageLoader
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    //Multidex
+    implementation "androidx.multidex:multidex:2.0.1"
+
+    //Logging
+    implementation "com.orhanobut:logger:2.2.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.12.1"
+
+
+}
+apply plugin: "com.google.gms.google-services"

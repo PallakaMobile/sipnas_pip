@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ps.sipnas.ui.home.detail.DetailSPDViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layer_toolbar" />
+
+        <ProgressBar
+            android:id="@+id/pb_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone"
+            app:loadingVisibility="@{viewModel.loadingView}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone"
+            app:contentVisibility="@{viewModel.content}">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/default_margin">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/spd"
+                    android:textSize="@dimen/text_size_large_x" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_spd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_margin_half"
+                    android:paddingBottom="@dimen/default_margin_half"
+                    android:text="@{String.format(@string/no_spd,viewModel.detailSPD.no)}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_1"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_1,viewModel.detailSPD.pembuatKomitmen)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <include layout="@layout/layer_divider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_2"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_2,viewModel.detailSPD.pegawaiDiPerintahkan)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <include layout="@layout/layer_divider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_3_a"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_3_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_3_a,viewModel.detailSPD.golongan)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_3_b"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_3_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_3_b,viewModel.detailSPD.jabatan)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_3_c"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_3_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_3_c,viewModel.detailSPD.tingkatMenurutPeraturan)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <include layout="@layout/layer_divider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_4"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_4,viewModel.detailSPD.maksud)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <include layout="@layout/layer_divider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_5"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_5,viewModel.detailSPD.angkutan)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <include layout="@layout/layer_divider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_6_a"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_6_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_6_a,viewModel.detailSPD.tempatBerangkat)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_6_b"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_6_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_6_b,viewModel.detailSPD.tempatTujuan)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <include layout="@layout/layer_divider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_7_a"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_7_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_7_a,viewModel.detailSPD.lamaPerjalanan)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_7_b"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_7_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_7_b,viewModel.detailSPD.tglBerangkat)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_7_c"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_7_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_7_c,viewModel.detailSPD.tglKembali)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+                <include layout="@layout/layer_divider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_8"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_8_a"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_8_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_8_a,viewModel.detailSPD.instansi)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:text="@string/title_8_b"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_8_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.format(@string/content_8_b,viewModel.detailSPD.mataAnggaran)}"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

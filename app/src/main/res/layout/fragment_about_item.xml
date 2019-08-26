@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="dataAbout"
+            type="ps.sipnas.ui.about.AboutFragment.About" />
+    </data>
+
+    <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_margin">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="@dimen/progressbar_medium"
+            android:layout_height="@dimen/progressbar_medium"
+            android:src="@{dataAbout.logo}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_toEndOf="@+id/iv_logo"
+            android:text="@{dataAbout.title}"
+            android:textSize="@dimen/text_size_large" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_toEndOf="@+id/iv_logo"
+            android:text="@{dataAbout.desc}"
+            android:textSize="@dimen/text_size_medium" />
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider"
+            android:layout_below="@+id/tv_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/white_soft" />
+    </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+</layout>

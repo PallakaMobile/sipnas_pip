@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ps.sipnas.ui.home.done.DoneViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        tools:context=".ui.home.done.DoneFragment">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_search"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_bg_tabs"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/default_margin_half"
+            android:drawableTint="@color/colorPrimary"
+            android:hint="@string/search_text"
+            android:padding="@dimen/default_margin"
+            app:contentVisibility="@{viewModel.content}" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            app:loadingVisibility="@{viewModel.loadingView}" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:disconnect="@{viewModel.disconnect}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dimen100"
+                android:layout_height="@dimen/dimen100"
+                android:src="@drawable/ic_disconnect" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disconnect"
+                android:textColor="@color/gray" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen50"
+            android:drawableTop="@drawable/ic_no_data"
+            android:gravity="center"
+            android:text="@string/no_data"
+            android:textSize="@dimen/text_size_extra_large"
+            android:visibility="gone"
+            app:noDataVisibility="@{viewModel.noDataView}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_done"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:contentVisibility="@{viewModel.content}"
+            app:rvAdapter="@{viewModel.adapterDone}" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_load_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/pb_load_more"
+                android:layout_width="@dimen/tab_small"
+                android:layout_height="@dimen/tab_small"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:paddingEnd="@dimen/default_margin_half" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/load_more"
+                android:textSize="@dimen/text_size_small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

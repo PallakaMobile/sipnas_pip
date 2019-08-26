@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.register.RegisterActivity">
+
+        <include layout="@layout/layer_toolbar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/tab_icon"
+            android:fontFamily="@font/signika_bold"
+            android:text="@string/app_name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_extra_large2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/tab_icon"
+            android:layout_marginTop="@dimen/default_margin_half"
+            android:layout_marginEnd="@dimen/tab_icon"
+            android:text="@string/register_info"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/tab_icon"
+            android:layout_marginTop="@dimen/default_margin_half"
+            android:layout_marginEnd="@dimen/tab_icon"
+            android:text="@string/thanks" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

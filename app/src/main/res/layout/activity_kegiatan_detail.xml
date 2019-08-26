@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        tools:context=".ui.home.upload.spj.detail.DetailSpjActivity">
+
+        <include layout="@layout/layer_toolbar" />
+
+        <ps.sipnas.utils.TouchImageView
+            android:id="@+id/iv_kegiatan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:transitionName="kegiatan" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_share_kegiatan"
+                android:layout_width="@dimen/tab_small"
+                android:layout_height="@dimen/tab_small"
+                android:layout_margin="@dimen/default_margin"
+                android:src="@drawable/ic_share" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_delete_kegiatan"
+                android:layout_width="@dimen/tab_small"
+                android:layout_height="@dimen/tab_small"
+                android:layout_margin="@dimen/default_margin"
+                android:src="@drawable/ic_delete" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

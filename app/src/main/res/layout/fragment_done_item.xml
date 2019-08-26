@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="ps.sipnas.data.model.DataDone.Data" />
+    </data>
+
+    <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cv_header"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="-16dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            app:cardCornerRadius="@dimen/default_margin_half"
+            app:strokeColor="@color/blue"
+            app:strokeWidth="1dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:padding="@dimen/default_margin_half">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_rincian_biaya_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin_half"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/default_margin_half"
+                        android:gravity="center_vertical"
+                        android:text="@string/rincian_biaya"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin_half"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_completed"
+                        android:drawablePadding="@dimen/default_margin_half"
+                        android:gravity="center_vertical"
+                        android:text="Laporan Lengkap"
+                        android:textSize="@dimen/text_size_medium" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ll_rincian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_detail_done"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_gallery"
+                        android:layout_width="@dimen/dimen100"
+                        android:layout_height="@dimen/dimen100"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/default_margin"
+                        android:src="@drawable/ic_view_done" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin_half"
+            app:cardCornerRadius="@dimen/default_margin_half"
+            app:cardElevation="@dimen/card_elevation">
+
+            <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+                android:id="@+id/rl_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/blue_gradient"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="@dimen/default_margin_half">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="@dimen/tab_icon"
+                    android:layout_height="@dimen/tab_icon"
+                    app:imageRound="@{data.foto}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_title_jadwal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_toEndOf="@+id/iv_profile"
+                    android:text="@string/title_jadwal_berangkat"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_jadwal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title_jadwal"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@+id/iv_profile"
+                    android:text="@{data.keberangkatan}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_large" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_spt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="60dp"
+                    android:text="@{data.noSpt}"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_no_spt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_no_spt"
+                    android:layout_alignParentEnd="true"
+                    android:text="No.SPT"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_tanggal_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_profile"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:text="Tanggal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_durasi_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_profile"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_toEndOf="@+id/tv_tanggal_title"
+                    android:text="Durasi"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_biaya_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_profile"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_toEndOf="@+id/tv_durasi_title"
+                    android:text="Biaya"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_tanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_tanggal_title"
+                    android:layout_marginBottom="8dp"
+                    android:text="@{data.tanggalMulai}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_durasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_durasi_title"
+                    android:layout_marginStart="50dp"
+                    android:layout_toEndOf="@+id/tv_tanggal_title"
+                    android:text="@{data.durasi}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_biaya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_biaya_title"
+                    android:layout_marginStart="40dp"
+                    android:layout_toEndOf="@+id/tv_durasi_title"
+                    android:text="@{data.totalBiaya}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_medium" />
+
+
+            </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+</layout>

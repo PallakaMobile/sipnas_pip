@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "779629669523",
+    "firebase_url": "https://sipnas-ae5f2.firebaseio.com",
+    "project_id": "sipnas-ae5f2",
+    "storage_bucket": "sipnas-ae5f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779629669523:android:c94c6f8eb33a9d1f",
+        "android_client_info": {
+          "package_name": "ps.sipnas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779629669523-eq681vtefhuumn25cutp001j9tjtva3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDlO4uC__TYiUeoNIlVRkUcUJi_lAniL4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

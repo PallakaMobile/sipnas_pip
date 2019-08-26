@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="aktifitas"
+            type="ps.sipnas.data.model.DataProfile.AktifitasItem" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dimen5"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/default_margin_half">
+
+        <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_aktifitas"
+                android:layout_width="@dimen/dimen50"
+                android:layout_height="@dimen/dimen50"
+                android:src="@drawable/ic_notif_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_aktifitas_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin_half"
+                android:layout_toEndOf="@+id/iv_aktifitas"
+                android:text="@{aktifitas.content}"
+                android:textSize="@dimen/text_size_small" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_aktifitas_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_aktifitas_message"
+                android:layout_marginStart="@dimen/default_margin_half"
+                android:layout_marginTop="@dimen/default_margin_half"
+                android:layout_toEndOf="@+id/iv_aktifitas"
+                android:background="@drawable/custom_bg_tabs_active"
+                android:backgroundTint="@color/blue"
+                android:padding="6dp"
+                android:text="Terbaru"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_small" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_aktifitas_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_aktifitas_message"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin_half"
+                android:textSize="@dimen/text_size_small"
+                app:date="@{aktifitas.date}"
+                app:time="@{aktifitas.hours}" />
+        </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
